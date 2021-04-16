@@ -25,7 +25,7 @@ const CardMovie = ({
 
       <Card
         className='test'
-        style={{ width: '10%', minWidth:150,borderRadius:'15px' ,borderTopRightRadius:'15px',boxShadow:'2px 2px 5px 0.2px rgba(0,0,0,0.2)',margin:10  }}
+        style={{ minWidth:150,width: '10%', borderRadius:'15px' ,borderTopRightRadius:'15px',boxShadow:'2px 2px 5px 0.2px rgba(0,0,0,0.2)',margin:10  }}
         bordered ={true}
         cover={
           <img

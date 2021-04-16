@@ -1,16 +1,17 @@
 .site-layout-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     min-height: auto;
     padding: 24px;
     background: #fff;
   }
   
-
   .ant-layout-content{
     overflow: scroll;
     height: auto;
   }
+ 
 
   .site-laoyout-cointent-cardMovie{
     width: 60%;
@@ -19,3 +20,5 @@
     flex-wrap: wrap;
 
   }
+
+

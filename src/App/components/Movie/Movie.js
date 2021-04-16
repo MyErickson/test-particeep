@@ -4,7 +4,7 @@ import React , { useEffect , useState } from 'react'
 import SelectCategory from './SelectCategory/SelectCategory'
 import CardMovie from './CardMovie/CardMovie'
 
-import { Layout, Menu}  from 'antd';
+import { Layout, Menu, Pagination}  from 'antd';
 import './Movie.css'
 
 const { Header, Content, Footer } = Layout;
@@ -56,6 +56,22 @@ const Movie = (props) => {
     }
     
   }
+
+  const  itemRender=(current, type, originalElement)=>{
+    if (type === 'prev') {
+      return <a>Previous</a>;
+    }
+    if (type === 'next') {
+      return <a>Next</a>;
+    }
+    return originalElement;
+  }
+
+  const handlePage = (page , pagination)=>{
+    const  listMoviebyPage = listMovie && listMovie.slice((page - 1) * pagination, page * pagination)  
+
+    setMovies(listMoviebyPage)  
+  }
   
   return (
     <Layout className="layout" style={{height:"100vh"}}>
@@ -73,16 +89,23 @@ const Movie = (props) => {
           <div className="site-laoyout-cointent-cardMovie">
             {movies && movies.map( (value,index) =>
                 <CardMovie 
-                    key={index} 
-                    movie={value} 
-                    handleClickClose={handleClickClose}
-                    handleLikeAndDislike={handleLikeAndDislike }
+                  key={index} 
+                  movie={value} 
+                  handleClickClose={handleClickClose}
+                  handleLikeAndDislike={handleLikeAndDislike }
                 />
               )}
-        
+  
           </div>
-     
+          <Pagination
+            onChange={handlePage}
+            total={10} 
+            showSizeChanger={true}
+            itemRender={itemRender} 
+            pageSizeOptions={[4,8,12]} 
+            defaultPageSize={12} />
         </div>
+       
       </Content>
 
       <Footer style={{ textAlign: 'center' }}>@ Particeep</Footer>
