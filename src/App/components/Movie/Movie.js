@@ -30,8 +30,8 @@ const Movie = (props) => {
 
 
   const handleClickClose  = (id)=>{
-        const filterListMovie = movies.filter(movie => movie.id !== id ) 
-        setMovies(filterListMovie)
+      const filterListMovie = movies.filter(movie => movie.id !== id ) 
+      setMovies(filterListMovie)
   }
 
 
@@ -46,13 +46,25 @@ const Movie = (props) => {
     setMovies(addLikeMovie)
   }
 
-
+  const movieByCategory =(category)=>{
+    
+    if(category.length >0 ){
+        const filterListMovie = movies.filter(movie => category.includes(movie.category)) 
+        setMovies(filterListMovie)
+    }else{
+        setMovies(listMovie)
+    }
+    
+  }
   
   return (
     <Layout className="layout" style={{height:"100vh"}}>
       <Header >
         <Menu theme="dark" mode="horizontal" style={{textAlign:'center'}} >
-          <SelectCategory />
+          <SelectCategory 
+            movies={movies} 
+            movieByCategory={movieByCategory}
+            />
         </Menu>
       </Header>
 

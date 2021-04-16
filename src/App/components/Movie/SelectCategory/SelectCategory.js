@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect ,useState} from 'react'
 
 import { Select } from 'antd';
 
@@ -6,20 +6,27 @@ import './SelectCategory.css'
 
 const { Option } = Select;
 
-const children = [];
-for (let i = 10; i < 36; i++) {
-  children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-
-}
-
-const SelectCategory = () => {
+const SelectCategory = ({
+    movies,
+    movieByCategory
+}) => {
+    const [listCategory,setListCategory] =useState(undefined)
 
 
+  useEffect(()=>{
+    function uniqueCatgory(){
+        const listCategory = movies && movies.map(value=>value.category)
+        const uniqueCategory = [...new Set(listCategory )]
+        
+        setListCategory(uniqueCategory)
+    }
+    uniqueCatgory()
+  },[movies])
 
   const handleChange =(value)=> {
-    console.log(`selected ${value}`);
+    movieByCategory(value)
   }
-    
+
 
   return (
     <Select
@@ -28,7 +35,9 @@ const SelectCategory = () => {
       placeholder="Select a category"
       onChange={handleChange}
     >
-      {children}
+      {listCategory && listCategory.map((value,index)=>
+           <Option key={value}>{value}</Option>
+      )}
     </Select>
   )
 }
