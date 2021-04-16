@@ -1,0 +1,10 @@
+.ant-select{
+    width: 40%;
+}
+
+@media screen and (max-width: 600px) {
+    .ant-select{
+        width: 100%;
+    }
+    
+}
