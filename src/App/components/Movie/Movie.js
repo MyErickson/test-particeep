@@ -17,7 +17,8 @@ const Movie = (props) => {
 
 
   useEffect(()=>{
-      
+    
+    // call reduce , retrieve list movie
     function receiveListMovie(){
       callMovie()
       if(listMovie){
@@ -28,13 +29,13 @@ const Movie = (props) => {
     receiveListMovie()
   },[listMovie])
 
-
+ // delete a card
   const handleClickClose  = (id)=>{
       const filterListMovie = movies.filter(movie => movie.id !== id ) 
       setMovies(filterListMovie)
   }
 
-
+ // add +1 to like or dislike
   const handleLikeAndDislike =(id,click)=>{
     const addLikeMovie =  movies.map(value=>{
         if(value.id === id){
@@ -46,6 +47,7 @@ const Movie = (props) => {
     setMovies(addLikeMovie)
   }
 
+// filter list movie by category
   const movieByCategory =(category)=>{
     
     if(category.length >0 ){
@@ -57,6 +59,7 @@ const Movie = (props) => {
     
   }
 
+// jsx for pagination
   const  itemRender=(current, type, originalElement)=>{
     if (type === 'prev') {
       return <a>Previous</a>;
@@ -67,6 +70,7 @@ const Movie = (props) => {
     return originalElement;
   }
 
+// display list movie by pagination
   const handlePage = (page , pagination)=>{
     const  listMoviebyPage = listMovie && listMovie.slice((page - 1) * pagination, page * pagination)  
 

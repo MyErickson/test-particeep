@@ -14,6 +14,7 @@ const SelectCategory = ({
 
 
   useEffect(()=>{
+      //retrieve categories without duplicates 
     function uniqueCatgory(){
         const listCategory = movies && movies.map(value=>value.category)
         const uniqueCategory = [...new Set(listCategory )]
@@ -22,6 +23,7 @@ const SelectCategory = ({
     }
     uniqueCatgory()
   },[movies])
+
 
   const handleChange =(value)=> {
     movieByCategory(value)
