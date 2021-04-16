@@ -13,7 +13,8 @@ const { Meta } = Card;
 
 const CardMovie = ({
   movie,
-  handleClickClose
+  handleClickClose,
+  handleLikeAndDislike ,
 }) => {
   
   
@@ -34,13 +35,13 @@ const CardMovie = ({
           />
         }
         actions={[
-          <div className="icon-action">
-            <DislikeOutlined key ="dislike"/>
+          <div className="icon-action"  onClick={()=>handleLikeAndDislike(id,"dislikes")}>
+            <DislikeOutlined key ="dislike" />
             <div style={{marginLeft:10}}>{dislikes}</div>
           </div>
           ,
-          <div className="icon-action">
-            <LikeOutlined key="like" />
+          <div className="icon-action" onClick={()=>handleLikeAndDislike(id,"likes")}>
+            <LikeOutlined key="like"  />
             <div style={{marginLeft:10}}>{likes}</div>
           </div>
           ,

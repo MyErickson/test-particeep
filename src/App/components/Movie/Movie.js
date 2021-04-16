@@ -33,7 +33,20 @@ const Movie = (props) => {
         const filterListMovie = movies.filter(movie => movie.id !== id ) 
         setMovies(filterListMovie)
   }
-    
+
+
+  const handleLikeAndDislike =(id,click)=>{
+    const addLikeMovie =  movies.map(value=>{
+        if(value.id === id){
+                value[click] += 1 
+        }
+        return value
+      })
+
+    setMovies(addLikeMovie)
+  }
+
+
   
   return (
     <Layout className="layout" style={{height:"100vh"}}>
@@ -46,9 +59,14 @@ const Movie = (props) => {
       <Content style={{ padding: '50px' }}>
         <div className="site-layout-content">
           <div className="site-laoyout-cointent-cardMovie">
-            {movies && movies.map( (value,index) =>{
-              return <CardMovie key={index} movie={value} handleClickClose={handleClickClose} />
-            }  )}
+            {movies && movies.map( (value,index) =>
+                <CardMovie 
+                    key={index} 
+                    movie={value} 
+                    handleClickClose={handleClickClose}
+                    handleLikeAndDislike={handleLikeAndDislike }
+                />
+              )}
         
           </div>
      
