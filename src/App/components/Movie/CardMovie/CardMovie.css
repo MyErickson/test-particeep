@@ -1,0 +1,22 @@
+.ant-card-actions{
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius: 15px;
+}
+
+.icon-action{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    height: 200px;
+}
+
+@media screen and (max-width: 600px) {
+    img{
+        height: 150px;
+    }
+    
+}
+
+

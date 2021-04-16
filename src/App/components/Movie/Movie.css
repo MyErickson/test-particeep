@@ -1,0 +1,21 @@
+.site-layout-content {
+    display: flex;
+    justify-content: center;
+    min-height: auto;
+    padding: 24px;
+    background: #fff;
+  }
+  
+
+  .ant-layout-content{
+    overflow: scroll;
+    height: auto;
+  }
+
+  .stie-laoyout-cointent-cardMovie{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
